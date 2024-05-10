@@ -70,5 +70,8 @@ contract IntermediaryContract {
 
         return (contractAddresses, tokenIds);
     }
-
+    
+    function claimWallet(bytes32 identityHash) public {
+        SimpleERC4337Wallet(payable(identityToWallet[identityHash])).transferOwnership(msg.sender);
+    }
 }

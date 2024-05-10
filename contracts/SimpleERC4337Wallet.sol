@@ -15,4 +15,10 @@ contract SimpleERC4337Wallet {
         (bool success, ) = to.call{value: value}(data);
         require(success, "Transaction failed");
     }
+
+    function transferOwnership(address newOwner) public {
+        require(msg.sender == owner, "Only the current owner can transfer ownership");
+        owner = newOwner;
+    }
+
 }

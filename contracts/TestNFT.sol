@@ -30,6 +30,5 @@ contract TestNFT is ERC721Enumerable, MintToGovIdInterface {
     function mintToGovId(uint256 tokenId, bytes32 identityHash) public override {
         _mint(intermediaryContract, tokenId);
         IntermediaryContract(intermediaryContract).allocateTokens(identityHash, tokenId, address(this));
-        IntermediaryContract(intermediaryContract).listAllTokens(identityHash);
     }
 }
