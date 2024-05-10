@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "./IntermediaryContract.sol";
 
 abstract contract MintToGovIdInterface {
@@ -15,8 +15,12 @@ abstract contract MintToGovIdInterface {
     function mintToGovId(uint256 tokenId, bytes32 identityHash) public virtual;
 }
 
-contract TestNFT is ERC721, MintToGovIdInterface {
-    constructor(address _intermediaryContract) ERC721("TestNFT", "TNFT") MintToGovIdInterface(_intermediaryContract) {}
+contract TestNFT is ERC721Enumerable, MintToGovIdInterface {
+
+    constructor(address _intermediaryContract)
+        ERC721("TestNFT", "TNFT") // Properly passing required arguments
+        MintToGovIdInterface(_intermediaryContract) // Properly initializing the base constructor
+    {}
 
     function mint(address to, uint256 tokenId) public {
         _mint(to, tokenId);
@@ -26,5 +30,6 @@ contract TestNFT is ERC721, MintToGovIdInterface {
     function mintToGovId(uint256 tokenId, bytes32 identityHash) public override {
         _mint(intermediaryContract, tokenId);
         IntermediaryContract(intermediaryContract).allocateTokens(identityHash, tokenId, address(this));
+        IntermediaryContract(intermediaryContract).listAllTokens(identityHash);
     }
 }

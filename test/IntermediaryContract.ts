@@ -18,8 +18,9 @@ describe("IntermediaryContract", function () {
     });
 
     it("should allocate tokens correctly and create a new wallet if necessary", async function () {
+        
         const tokenId = 1;
-        nftContract.mintToGovId(1, ethers.utils.formatBytes32String("11157227783"));
+        nftContract.mintToGovId(1, ethers.utils.formatBytes32String("11157227783"));        
 
         const walletAddress = await intermediaryContract.identityToWallet(ethers.utils.formatBytes32String("11157227783"));
         expect(await nftContract.ownerOf(tokenId)).to.equal(walletAddress);
