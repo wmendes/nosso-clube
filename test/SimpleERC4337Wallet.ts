@@ -20,15 +20,6 @@ describe("SimpleERC4337Wallet", function () {
         };
 
         // Funding wallet for transaction
-        await owner.sendTransaction({
-            to: wallet.address,
-            value: ethers.utils.parseEther("1.0")
-        });
-
-        // await expect(() => wallet.executeTransaction(
-        //     recipient, 
-        //     ethers.utils.parseEther("1.0"), 
-        //     transaction.data
-        // )).to.changeEtherBalances([wallet, recipient], [ethers.utils.parseEther("-1.0"), ethers.utils.parseEther("1.0")]);
+        const result = await owner.sendTransaction(transaction);
     });
 });
