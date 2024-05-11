@@ -6,7 +6,10 @@
   "scripts": {
     "test": "npx hardhat test",
     "chain": "npx hardhat node",
-    "console": "npx hardhat console"
+    "console": "npx hardhat console",
+    "deployIntermediary": "npx hardhat ignition deploy ./ignition/modules/IntermediaryContract.ts --network localhost",
+    "deployERC4337": "npx hardhat ignition deploy ./ignition/modules/SimpleERC4337Wallet.ts --network localhost",
+    "deployNFT": "npx hardhat ignition deploy ./ignition/modules/TestNFT.ts --network localhost"
   },
   "author": "",
   "license": "ISC",
