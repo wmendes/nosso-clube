@@ -1,11 +1,13 @@
-import { expect } from "chai";
+import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
+import { Contract } from "ethers";
 import { ethers } from "hardhat";
+import { expect } from "chai";
 
 describe("IntermediaryContract", function () {
-    let intermediaryContract;
-    let nftContract;
-    let owner;
-    let addr1;
+    let intermediaryContract: Contract;
+    let nftContract: Contract;
+    let owner: SignerWithAddress;
+    let addr1: SignerWithAddress;
 
     beforeEach(async function () {
         const Intermediary = await ethers.getContractFactory("IntermediaryContract");

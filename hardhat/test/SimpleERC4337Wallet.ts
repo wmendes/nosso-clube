@@ -1,9 +1,10 @@
-import { expect } from "chai";
+import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
+import { Contract } from "ethers";
 import { ethers } from "hardhat";
 
 describe("SimpleERC4337Wallet", function () {
-    let wallet;
-    let owner;
+    let wallet: Contract;
+    let owner: SignerWithAddress;
 
     beforeEach(async function () {
         [owner] = await ethers.getSigners();
