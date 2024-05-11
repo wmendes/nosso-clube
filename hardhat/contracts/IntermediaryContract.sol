@@ -12,8 +12,6 @@ contract IntermediaryContract {
 
     mapping(bytes32 => address) public identityToWallet;    
 
-
-
     function setWalletAddress(bytes32 identityHash, address wallet) public {
         identityToWallet[identityHash] = wallet;
     }
@@ -25,7 +23,6 @@ contract IntermediaryContract {
         erc721Contracts.push(tokenAdress);
 
         console.log("Token number %s of contract %s transferred to wallet %s", tokenId, tokenAdress, walletAddress);
-
     }
 
     function returnOrCreateWallet(bytes32 identityHash) private returns (address newWallet) {
@@ -34,6 +31,7 @@ contract IntermediaryContract {
             walletAddress = address(new SimpleERC4337Wallet(address(this)));
             setWalletAddress(identityHash, walletAddress);
         }
+        
         return walletAddress;
     }
 
