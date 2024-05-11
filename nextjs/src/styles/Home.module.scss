@@ -1,0 +1,34 @@
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background: url("../../public/bg-login.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 2rem;
+
+  img {
+    width: 12rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: white;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+
+    p {
+      width: 85%;
+    }
+  }
+}

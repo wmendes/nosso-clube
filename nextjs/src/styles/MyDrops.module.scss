@@ -1,0 +1,13 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .myDropsWrapper {
+        width: 100%;
+        background: #1E1E1E;
+        min-height: 100vh;
+        color: #787878;
+        padding: 2rem;
+    }
+}
